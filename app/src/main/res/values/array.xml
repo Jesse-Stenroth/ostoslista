@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string-array name="spinnerItems">
+    <item>L</item>
+    <item>Kg</item>
+    <item>g</item>
+    <item>kpl</item>
+    <item>pkt</item>
+    <item>ps</item>
+</string-array>
+    <string-array name="luokat">
+        <item>juomat</item>
+        <item>mehut</item>
+        <item>maito</item>
+        <item>palvelutiski</item>
+        <item>juustot</item>
+        <item>liha</item>
+        <item>kala</item>
+        <item>makeiset</item>
+        <item>sipsit</item>
+        <item>leivokset</item>
+        <item>leipä</item>
+        <item>hedelmät</item>
+        <item>vihannekset</item>
+        <item>pakasteet</item>
+        <item>kertakäyttö</item>
+        <item>astiat</item>
+        <item>siivous</item>
+        <item>lelut</item>
+        <item>kirjat</item>
+        <item>elokuvat</item>
+        <item>pelit</item>
+        <item>musiikki</item>
+        <item>kodinkoneet</item>
+        <item>pienkoneet</item>
+        <item>lamput ja paristot</item>
+        <item>sauna</item>
+        <item>rakennus</item>
+        <item>tekstiilit</item>
+    </string-array>
+</resources>

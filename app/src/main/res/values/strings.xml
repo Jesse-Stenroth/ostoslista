@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ostoslista</string>
+    <string name="title_home">Tuote lisäys</string>
+    <string name="title_dashboard">Haku</string>
+    <string name="title_notifications">Listan vienti</string>
+    <string name="AloitusOtsikko">Tuotteiden lisäys:</string>
+    <string name="tuotteenNimi">Tuotteen nimi</string>
+    <string name="tuotteenKoko">Koko:</string>
+    <string name="tuoteKoonTyyppi">Koon tyyppi:</string>
+    <string name="luokka">Tuotteen luokka:</string>
+    <string name="lisays">Lisää</string>
+    <string name="title_activity_haku">haku</string>
+    <string name="title_activity_vienti">vienti</string>
+</resources>
