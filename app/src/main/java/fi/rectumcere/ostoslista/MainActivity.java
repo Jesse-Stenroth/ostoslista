@@ -7,12 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Context tama = this;
-
+    private EditText nimiKentta;
+    private EditText koko;
+    private Spinner tyyppi;
+    private Spinner luokka;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -45,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        //elementtien linkittäminen
+        this.nimiKentta = (EditText) findViewById(R.id.nimi);
+        this.koko = (EditText) findViewById(R.id.koko);
+        this.tyyppi = (Spinner) findViewById(R.id.koonTyyppi);
+        this.luokka = (Spinner) findViewById(R.id.luokkia);
     }
 
+
+    public void lisaaTuote(View view) {
+
+    }
 }
