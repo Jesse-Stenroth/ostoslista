@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ostoslista</string>
     <string name="title_home">Tuote lisäys</string>
-    <string name="title_dashboard">Haku</string>
+    <string name="title_dashboard">Ostoslistan luonti</string>
     <string name="title_notifications">Listan vienti</string>
     <string name="AloitusOtsikko">Tuotteiden lisäys:</string>
     <string name="tuotteenNimi">Tuotteen nimi</string>
