@@ -11,4 +11,6 @@
     <string name="lisays">Lisää</string>
     <string name="title_activity_haku">haku</string>
     <string name="title_activity_vienti">vienti</string>
+    <string name="etsinta">Etsi</string>
+    <string name="hae">Hae</string>
 </resources>
