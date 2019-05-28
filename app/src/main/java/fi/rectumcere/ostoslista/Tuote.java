@@ -44,4 +44,8 @@ public class Tuote {
     public void setKoon_tyyppi(String koon_tyyppi) {
         this.koon_tyyppi = koon_tyyppi;
     }
+    @Override
+    public String toString(){
+        return this.nimi + " (" + this.koko + " " + this.koon_tyyppi + ")";
+    }
 }

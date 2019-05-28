@@ -7,11 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class haku extends AppCompatActivity {
 
     private Context tama = this;
+    private ArrayList<Tuote> lista;
+    private tuotteetMuistissa muisti = new tuotteetMuistissa();
+    private ListView nakyma;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,6 +50,18 @@ public class haku extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        lista = muisti.getListFromStorage(this);
+        this.nakyma = (ListView) findViewById(R.id.listaNakyma);
+    }
+
+    private void paivitaLista(){
+        ArrayList<String> arrayList = new ArrayList<String>();
+        for(int luku = 0; luku < lista.size(); luku++){
+            arrayList.add(lista.get(luku).toString());
+        }
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        nakyma.setAdapter(arrayAdapter);
     }
 
 }
