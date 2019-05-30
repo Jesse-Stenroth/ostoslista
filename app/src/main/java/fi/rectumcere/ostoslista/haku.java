@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -57,8 +60,32 @@ public class haku extends AppCompatActivity {
 
         lista = muisti.getListFromStorage(this);
         this.kentta = (EditText) findViewById(R.id.etsi);
+
         this.nakyma = (ListView) findViewById(R.id.listaNakyma);
         paivitaLista();
+
+        //näppäimistön optimointia
+        kentta.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    String syote = kentta.getText().toString();
+                    lista = muisti.getListFromStorage(tama);
+                    if(!(syote.trim().equals("") || syote == null || syote.isEmpty() || syote.trim().toLowerCase().equals("etsi"))){
+                        ArrayList<Tuote> uusi = new ArrayList<>();
+                        for(int kierros=0; kierros < lista.size(); kierros++){
+                            if(lista.get(kierros).toString().contains(syote) || lista.get(kierros).getLuokka().contains(syote)){
+                                uusi.add(lista.get(kierros));
+                            }
+                        }
+                        lista = uusi;
+                    }
+                    paivitaLista();
+                    System.gc();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void paivitaLista(){
