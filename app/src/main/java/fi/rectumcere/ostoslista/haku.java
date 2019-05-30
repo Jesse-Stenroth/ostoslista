@@ -7,7 +7,10 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ public class haku extends AppCompatActivity {
     private ArrayList<Tuote> lista;
     private tuotteetMuistissa muisti = new tuotteetMuistissa();
     private ListView nakyma;
+    private EditText kentta;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -52,17 +56,37 @@ public class haku extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         lista = muisti.getListFromStorage(this);
+        this.kentta = (EditText) findViewById(R.id.etsi);
         this.nakyma = (ListView) findViewById(R.id.listaNakyma);
         paivitaLista();
     }
 
     private void paivitaLista(){
         ArrayList<String> arrayList = new ArrayList<String>();
-        for(int luku = 0; luku < lista.size(); luku++){
-            arrayList.add(lista.get(luku).toString());
+        try {
+            for (int luku = 0; luku < lista.size(); luku++) {
+                arrayList.add(lista.get(luku).toString());
+            }
+            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+            nakyma.setAdapter(arrayAdapter);
+        } catch (Exception e){
+
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
-        nakyma.setAdapter(arrayAdapter);
     }
 
+    public void etsiTuotteet(View view) {
+        String syote = kentta.getText().toString();
+        this.lista = muisti.getListFromStorage(this);
+        if(!(syote.trim().equals("") || syote == null || syote.isEmpty() || syote.trim().toLowerCase().equals("etsi"))){
+            ArrayList<Tuote> uusi = new ArrayList<>();
+            for(int kierros=0; kierros < this.lista.size(); kierros++){
+                if(this.lista.get(kierros).toString().contains(syote) || this.lista.get(kierros).getLuokka().contains(syote)){
+                    uusi.add(this.lista.get(kierros));
+                }
+            }
+            this.lista = uusi;
+        }
+        paivitaLista();
+        System.gc();
+    }
 }
