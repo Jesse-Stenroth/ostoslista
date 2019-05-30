@@ -53,6 +53,7 @@ public class haku extends AppCompatActivity {
 
         lista = muisti.getListFromStorage(this);
         this.nakyma = (ListView) findViewById(R.id.listaNakyma);
+        paivitaLista();
     }
 
     private void paivitaLista(){
