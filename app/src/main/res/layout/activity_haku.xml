@@ -42,6 +42,12 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Klikkaamalla listalta jotain se lisätään ostoslistalle"
+            android:textSize="18sp" />
+
         <ListView
             android:id="@+id/listaNakyma"
             android:layout_width="match_parent"

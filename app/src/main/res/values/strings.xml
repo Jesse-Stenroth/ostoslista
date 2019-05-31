@@ -3,7 +3,7 @@
     <string name="title_home">Tuote lisäys</string>
     <string name="title_dashboard">Ostoslistan luonti</string>
     <string name="title_notifications">Listan vienti</string>
-    <string name="AloitusOtsikko">Tuotteiden lisäys:</string>
+    <string name="AloitusOtsikko">Tuotteiden lisäys Laitteen muistiin:</string>
     <string name="tuotteenNimi">Tuotteen nimi</string>
     <string name="tuotteenKoko">Koko:</string>
     <string name="tuoteKoonTyyppi">Koon tyyppi:</string>

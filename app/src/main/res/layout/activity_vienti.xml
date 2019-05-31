@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Klikkaamalla listalta jotain voit postaa tuotteita"
+            android:text="Klikkaamalla listalta jotain voit poistaa tuotteita"
             android:textSize="18sp" />
 
         <ListView
