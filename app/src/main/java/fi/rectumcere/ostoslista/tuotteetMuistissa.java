@@ -2,12 +2,14 @@ package fi.rectumcere.ostoslista;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +20,11 @@ import java.util.ArrayList;
 public class tuotteetMuistissa {
     private JSONObject json;
     private JSONArray arrayJSON;
+    private Context content;
+
+    public tuotteetMuistissa(Context con){
+        this.content = con;
+    }
     public ArrayList<Tuote> getListFromStorage(Context context){
         String ret = "";
 
@@ -81,6 +88,15 @@ public class tuotteetMuistissa {
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+    public void poistaTiedosto(){
+        File dir = content.getFilesDir();
+        File file = new File(dir, "tuotteet.json");
+        boolean deleted = file.delete();
+        if(deleted){
+            Toast.makeText(content, "tuotteet poistettu muistista",
+                    Toast.LENGTH_LONG).show();
         }
     }
 }

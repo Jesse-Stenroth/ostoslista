@@ -19,6 +19,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Poista tuotteet muistista"
+                android:layout_marginTop="25dp"
+                android:onClick="postaKaikki"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,7 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="27dp"
-                    android:layout_marginTop="75dp"
+                    android:layout_marginTop="60dp"
                     android:layout_weight="1"
                     android:text="@string/AloitusOtsikko"
                     android:textSize="24sp" />
@@ -44,7 +52,7 @@
                     android:id="@+id/nimi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="50dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -60,7 +68,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="50dp"
                     android:layout_weight="1"
                     android:text="@string/tuotteenKoko" />
 
@@ -68,7 +76,7 @@
                     android:id="@+id/koko"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="50dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number" />
@@ -83,7 +91,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="50dp"
                     android:layout_weight="1"
                     android:text="@string/tuoteKoonTyyppi" />
 
@@ -92,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="50dp"
                     android:layout_weight="1"
                     android:entries="@array/spinnerItems"
                     android:spinnerMode="dropdown" />
@@ -113,7 +121,7 @@
                         android:id="@+id/textView5"
                         android:layout_width="171dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="50dp"
                         android:layout_weight="1"
                         android:text="@string/luokka" />
 
@@ -122,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="45dp"
-                        android:layout_marginTop="60dp"
+                        android:layout_marginTop="50dp"
                         android:layout_weight="1"
                         android:entries="@array/luokat"
                         android:spinnerMode="dropdown" />

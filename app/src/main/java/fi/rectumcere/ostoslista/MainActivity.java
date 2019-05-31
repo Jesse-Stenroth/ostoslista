@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner tyyppi;
     private Spinner luokka;
     private ArrayList<Tuote> lista;
-    private tuotteetMuistissa muisti = new tuotteetMuistissa();
+    private tuotteetMuistissa muisti = new tuotteetMuistissa(this);
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -79,5 +79,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         lista.add(new Tuote(nimi,luokkia,kokoo,type));
+        Toast.makeText(this, "Tuote lisätty",
+                Toast.LENGTH_LONG).show();
+    }
+
+    public void postaKaikki(View view) {
+        this.muisti.poistaTiedosto();
+        Toast.makeText(this, "Tuotteet poistettu muistista",
+                Toast.LENGTH_LONG).show();
     }
 }
