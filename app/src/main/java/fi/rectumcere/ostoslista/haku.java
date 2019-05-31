@@ -9,15 +9,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class haku extends AppCompatActivity {
 
@@ -26,6 +26,7 @@ public class haku extends AppCompatActivity {
     private tuotteetMuistissa muisti = new tuotteetMuistissa();
     private ListView nakyma;
     private EditText kentta;
+    private ostoskori ostokset;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -64,6 +65,9 @@ public class haku extends AppCompatActivity {
         this.nakyma = (ListView) findViewById(R.id.listaNakyma);
         paivitaLista();
 
+        this.ostokset = new ostoskori(tama);
+        this.ostokset.lataaMuistista();
+
         //näppäimistön optimointia
         kentta.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -84,6 +88,26 @@ public class haku extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+        //listan klikkaus
+        nakyma.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                String entry= parent.getAdapter().getItem(position).toString();
+                Toast.makeText(tama, "Tuote lisätty",
+                        Toast.LENGTH_LONG).show();
+                int paikka = -1;
+                for(int k=0; k <lista.size();k++){
+                    if(lista.get(k).toString().contains(entry.trim())){
+                        paikka = k;
+                        break;
+                    }
+                }
+                if(paikka != -1){
+                    ostokset.lisaa(lista.get(paikka));
+                }
             }
         });
     }

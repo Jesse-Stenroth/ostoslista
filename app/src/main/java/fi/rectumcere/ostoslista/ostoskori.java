@@ -2,12 +2,14 @@ package fi.rectumcere.ostoslista;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,6 +31,40 @@ public class ostoskori {
 
     public void poista(int paikka){
         this.listaus.remove(paikka);
+    }
+    public void poistaTiedosto(){
+        File dir = content.getFilesDir();
+        File file = new File(dir, "ostoskori.json");
+        boolean deleted = file.delete();
+        if(deleted){
+            Toast.makeText(content, "ostoslista poistettu",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+    public void poistaListalta(String teksti){
+        String[] osat = teksti.split("x");
+        String loppuosa = "";
+        for(int kierros = 1; kierros < osat.length; kierros++){
+            loppuosa += "x" + osat[kierros];
+        }
+        String apu = "";
+        for(int k=4; k < loppuosa.length(); k++){
+            char merkki = loppuosa.charAt(k);
+            if(!(merkki == ']')){
+                apu += merkki;
+            }
+        }
+        apu = apu.trim();
+        int paikka = -1;
+        for(int u=0; u < this.listaus.size(); u++){
+            if(this.listaus.get(u).toString().contains(apu)){
+                paikka = u;
+                break;
+            }
+        }
+        if(!(paikka == -1)){
+            this.listaus.remove(paikka);
+        }
     }
     public void clear(){
         this.listaus.clear();
