@@ -79,6 +79,7 @@ public class vienti extends AppCompatActivity {
 
     public void poistaTiedostoMuistista(View view) {
         this.ostokset.poistaTiedosto();
+        this.ostokset.clear();
         asetaTuotteetListalle();
     }
 
