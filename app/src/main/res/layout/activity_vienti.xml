@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="Poista ostoslista" />
+            android:text="Poista ostoslista"
+            android:onClick="poistaTiedostoMuistista"/>
 
         <TextView
             android:id="@+id/textView"
@@ -44,14 +45,16 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="370dp"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:id="@+id/loppulista"/>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="Lähetä lista" />
+            android:text="Lähetä lista"
+            android:onClick="laheta"/>
 
     </LinearLayout>
 

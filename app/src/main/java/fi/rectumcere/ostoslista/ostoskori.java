@@ -41,6 +41,14 @@ public class ostoskori {
                     Toast.LENGTH_LONG).show();
         }
     }
+    public String korinLahetys(){
+        ArrayList<String> listt = ulos();
+        String apu = "";
+        for(int i = 0; i < listt.size(); i++){
+            apu += listt.get(i) + "\n";
+        }
+        return apu;
+    }
     public void poistaListalta(String teksti){
         String[] osat = teksti.split("x");
         String loppuosa = "";

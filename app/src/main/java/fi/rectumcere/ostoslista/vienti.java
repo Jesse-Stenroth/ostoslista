@@ -7,12 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class vienti extends AppCompatActivity {
 
     private Context tama = this;
+    private ostoskori ostokset;
+    private ListView nakyma;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -45,6 +51,41 @@ public class vienti extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        this.ostokset = new ostoskori(this);
+        this.nakyma = (ListView) findViewById(R.id.loppulista);
+        asetaTuotteetListalle();
+
+        this.nakyma.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                String entry= parent.getAdapter().getItem(position).toString();
+                ostokset.poistaListalta(entry);
+                asetaTuotteetListalle();
+            }
+        });
+
+    }
+    private void asetaTuotteetListalle(){
+        try {
+            ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, ostokset.ulos());
+            nakyma.setAdapter(arrayAdapter);
+        } catch (Exception e){
+
+        }
     }
 
+    public void poistaTiedostoMuistista(View view) {
+        this.ostokset.poistaTiedosto();
+        asetaTuotteetListalle();
+    }
+
+    public void laheta(View view) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, ostokset.korinLahetys());
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+    }
 }

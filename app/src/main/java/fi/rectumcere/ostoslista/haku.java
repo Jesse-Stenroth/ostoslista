@@ -108,6 +108,7 @@ public class haku extends AppCompatActivity {
                 if(paikka != -1){
                     ostokset.lisaa(lista.get(paikka));
                 }
+                ostokset.tallennaMuistiin();
             }
         });
     }
