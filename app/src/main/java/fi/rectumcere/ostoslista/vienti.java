@@ -54,6 +54,7 @@ public class vienti extends AppCompatActivity {
 
         this.ostokset = new ostoskori(this);
         this.nakyma = (ListView) findViewById(R.id.loppulista);
+        this.ostokset.lataaMuistista();
         asetaTuotteetListalle();
 
         this.nakyma.setOnItemClickListener(new AdapterView.OnItemClickListener() {
