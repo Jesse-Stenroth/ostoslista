@@ -87,5 +87,6 @@ public class MainActivity extends AppCompatActivity {
         this.muisti.poistaTiedosto();
         Toast.makeText(this, "Tuotteet poistettu muistista",
                 Toast.LENGTH_LONG).show();
+        this.lista.clear();
     }
 }

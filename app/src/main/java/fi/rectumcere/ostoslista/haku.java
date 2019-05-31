@@ -17,8 +17,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
 public class haku extends AppCompatActivity {
 
     private Context tama = this;
