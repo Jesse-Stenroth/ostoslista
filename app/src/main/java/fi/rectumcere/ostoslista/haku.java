@@ -23,7 +23,7 @@ public class haku extends AppCompatActivity {
 
     private Context tama = this;
     private ArrayList<Tuote> lista;
-    private tuotteetMuistissa muisti = new tuotteetMuistissa();
+    private tuotteetMuistissa muisti = new tuotteetMuistissa(this);
     private ListView nakyma;
     private EditText kentta;
     private ostoskori ostokset;
