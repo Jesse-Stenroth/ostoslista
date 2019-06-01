@@ -7,6 +7,55 @@
     android:layout_height="match_parent"
     tools:context=".vienti">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="44dp">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:onClick="poistaTiedostoMuistista"
+            android:text="Poista ostoslista"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Klikkaamalla listalta jotain voit poistaa tuotteita"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <ListView
+            android:id="@+id/loppulista"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_marginTop="43dp"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            tools:layout_editor_absoluteX="0dp">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="58dp"
+            android:layout_marginBottom="75dp"
+            android:onClick="laheta"
+            android:text="Lähetä lista"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loppulista"
+            tools:layout_editor_absoluteX="0dp" />
+    </android.support.constraint.ConstraintLayout>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"
@@ -18,44 +67,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Poista ostoslista"
-            android:onClick="poistaTiedostoMuistista"/>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Klikkaamalla listalta jotain voit poistaa tuotteita"
-            android:textSize="18sp" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="370dp"
-            android:layout_marginTop="15dp"
-            android:id="@+id/loppulista"/>
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Lähetä lista"
-            android:onClick="laheta"/>
-
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
