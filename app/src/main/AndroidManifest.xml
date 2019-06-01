@@ -13,14 +13,17 @@
         <activity
             android:name=".vienti"
             android:label="@string/title_activity_vienti"
+            android:configChanges="orientation"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".haku"
             android:label="@string/title_activity_haku"
+            android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
