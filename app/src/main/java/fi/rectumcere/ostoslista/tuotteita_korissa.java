@@ -5,9 +5,18 @@ import java.util.HashMap;
 
 public class tuotteita_korissa {
     HashMap<String, Integer> map;
+
+    /**
+     * constructor create map of how same item is in shopping cart
+     */
     public tuotteita_korissa(){
         this.map = new HashMap();
     }
+
+    /**
+     * add string of Tuote to map if contains already then plus one to integer
+     * @param tuote Tuote String
+     */
     public void lisaa(String tuote){
         if(this.map.containsKey(tuote)){
             this.map.put(tuote, this.map.get(tuote) + 1);
@@ -15,6 +24,11 @@ public class tuotteita_korissa {
             this.map.put(tuote, 1);
         }
     }
+
+    /**
+     * get list of different items and how many are they
+     * @return ArrayList
+     */
     public ArrayList<String> getLista(){
         ArrayList<String> lista = new ArrayList<>();
         ArrayList<String> apu = new ArrayList<String>(this.map.keySet());
@@ -24,10 +38,19 @@ public class tuotteita_korissa {
         apu.clear();
         return lista;
     }
+
+    /**
+     * get map size
+     * @return size
+     */
     public int getKoko(){
         return this.map.size();
     }
 
+    /**
+     * get hashmap copy of item and integer
+     * @return hashMap
+     */
     public HashMap<Tuote,Integer> getMappi(){
         HashMap<Tuote, Integer> apuMappi = new HashMap();
         ArrayList<Tuote> lista = new Tiedot().getTuotteet();
@@ -43,7 +66,13 @@ public class tuotteita_korissa {
         }
         return apuMappi;
     }
+
+    /**
+     * delete item from map
+     * @param tu String of Tuote
+     */
     public void poista(String tu){
+        //get String what can use
         String tuote = "";
         String[] osa = tu.split(" ");
         for(int k=2;k<osa.length-1;k++){
