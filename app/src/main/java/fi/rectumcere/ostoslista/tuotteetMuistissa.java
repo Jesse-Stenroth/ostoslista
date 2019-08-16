@@ -22,9 +22,19 @@ public class tuotteetMuistissa {
     private JSONArray arrayJSON;
     private Context content;
 
+    /**
+     * constructor set activity Context to this class
+     * @param con activity Context
+     */
     public tuotteetMuistissa(Context con){
         this.content = con;
     }
+
+    /**
+     * download items from memory
+     * @param context activity context
+     * @return list of Tuote items
+     */
     public ArrayList<Tuote> getListFromStorage(Context context){
         String ret = "";
 
@@ -63,6 +73,12 @@ public class tuotteetMuistissa {
         }
         return null;
     }
+
+    /**
+     * save arraylist of Tuote items to memory
+     * @param lista
+     * @param context
+     */
     public void putListToFile(ArrayList<Tuote> lista, Context context){
         String data = "";
         arrayJSON = new JSONArray();
@@ -90,6 +106,10 @@ public class tuotteetMuistissa {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
+
+    /**
+     * delete file of Tuote items
+     */
     public void poistaTiedosto(){
         File dir = content.getFilesDir();
         File file = new File(dir, "tuotteet.json");
