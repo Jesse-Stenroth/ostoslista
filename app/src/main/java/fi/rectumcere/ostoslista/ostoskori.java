@@ -22,25 +22,49 @@ public class ostoskori {
     private JSONObject json;
     private JSONArray arrayJSON;
     private Context content;
+
+    /**
+     * constructor
+     * @param contentti activity Context
+     */
     public ostoskori(Context contentti){
         this.content = contentti;
     }
+
+    /**
+     * add item Tuote to list
+     * @param tuote
+     */
     public void lisaa(Tuote tuote){
         this.listaus.add(tuote);
     }
 
+    /**
+     * remove item on position paikka
+     * @param paikka position
+     */
     public void poista(int paikka){
         this.listaus.remove(paikka);
     }
+
+    /**
+     * Remove shoppinglist file (json)
+     */
     public void poistaTiedosto(){
         File dir = content.getFilesDir();
         File file = new File(dir, "ostoskori.json");
         boolean deleted = file.delete();
         if(deleted){
+            //Tell file have been deleted
             Toast.makeText(content, "ostoslista poistettu",
                     Toast.LENGTH_LONG).show();
         }
     }
+
+    /**
+     * give list on String
+     * @return String what contains shoppinglist
+     */
     public String korinLahetys(){
         ArrayList<String> listt = ulos();
         String apu = "";
@@ -49,7 +73,13 @@ public class ostoskori {
         }
         return apu;
     }
+
+    /**
+     * This method remove item of shoppinglist
+     * @param teksti title of remove item
+     */
     public void poistaListalta(String teksti){
+        //First must take off x element of text
         String[] osat = teksti.split("x");
         String loppuosa = "";
         for(int kierros = 1; kierros < osat.length; kierros++){
@@ -64,6 +94,7 @@ public class ostoskori {
         }
         apu = apu.trim();
         int paikka = -1;
+        //get first item what match
         for(int u=0; u < this.listaus.size(); u++){
             if(this.listaus.get(u).toString().contains(apu)){
                 paikka = u;
@@ -74,13 +105,22 @@ public class ostoskori {
             this.listaus.remove(paikka);
         }
     }
+
+    /**
+     * Clear Tuote list
+     */
     public void clear(){
         this.listaus.clear();
     }
 
+    /**
+     * give String list of item in shoppinglist
+     * @return String Arraylist
+     */
     public ArrayList<String> ulos(){
-
+        //help list
         ArrayList<String> apu = new ArrayList<>();
+        //list item what have been added
         ArrayList<String> joLisatty = new ArrayList<>();
         for(int i = 0; i < this.listaus.size(); i++){
             Tuote tuote = this.listaus.get(i);
@@ -92,6 +132,13 @@ public class ostoskori {
 
         return apu;
     }
+
+    /**
+     * This method tell if String list contains already String of Tuote
+     * @param list Arraylist of String
+     * @param y Tuote class item
+     * @return true if contains false if not
+     */
     private boolean sisaltaakoListaJo(ArrayList<String> list, Tuote y){
         for(int k = 0; k < list.size(); k++){
             if(list.get(k).contains(y.toString())){
@@ -100,6 +147,12 @@ public class ostoskori {
         }
         return false;
     }
+
+    /**
+     * This method tell how many same Tuote item is in list
+     * @param tuote Tuote item
+     * @return value of items
+     */
     private int kuinkaMontaSamaa(Tuote tuote){
         int luku = 0;
         for(int kierros = 0; kierros < this.listaus.size(); kierros++){
@@ -109,6 +162,10 @@ public class ostoskori {
         }
         return luku;
     }
+
+    /**
+     * download shoppinglist of memory
+     */
     public void lataaMuistista(){
         String ret = "";
 
@@ -146,6 +203,10 @@ public class ostoskori {
             Log.e("login activity", "JSON error: " + e.toString());
         }
     }
+
+    /**
+     * save shoppinglist to memory
+     */
     public void tallennaMuistiin(){
         String data = "";
         arrayJSON = new JSONArray();
