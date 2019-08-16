@@ -33,14 +33,17 @@ public class haku extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    //Main screen activity
                     Intent intent = new Intent(tama, MainActivity.class);
                     startActivity(intent);
                     return true;
                 case R.id.navigation_dashboard:
+                    //this activity
                     Toast.makeText(tama, "Olet täällä",
                             Toast.LENGTH_LONG).show();
                     return true;
                 case R.id.navigation_notifications:
+                    //export activity
                     Intent intent2 = new Intent(tama, vienti.class);
                     startActivity(intent2);
                     return true;
@@ -53,20 +56,22 @@ public class haku extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_haku);
-
+        //Set bottom navigation
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        //Get items from memory
         lista = muisti.getListFromStorage(this);
+        //Get elements from activity xml
         this.kentta = (EditText) findViewById(R.id.etsi);
 
         this.nakyma = (ListView) findViewById(R.id.listaNakyma);
         paivitaLista();
-
+        //create new class of shoppinglist
         this.ostokset = new ostoskori(tama);
+        //get shoppinglist from memory
         this.ostokset.lataaMuistista();
 
-        //näppäimistön optimointia
+        //keyboard optimazing
         kentta.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
@@ -88,14 +93,17 @@ public class haku extends AppCompatActivity {
                 return false;
             }
         });
-        //listan klikkaus
+        //Click of list
         nakyma.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
+                //get String what have been clicked
                 String entry= parent.getAdapter().getItem(position).toString();
+                //Tell item have been added to shoppinglist
                 Toast.makeText(tama, "Tuote lisätty",
                         Toast.LENGTH_LONG).show();
+                //Get position in Tuote list
                 int paikka = -1;
                 for(int k=0; k <lista.size();k++){
                     if(lista.get(k).toString().contains(entry.trim())){
@@ -103,14 +111,19 @@ public class haku extends AppCompatActivity {
                         break;
                     }
                 }
+                //add item to shopping list
                 if(paikka != -1){
                     ostokset.lisaa(lista.get(paikka));
                 }
+                //save shopping list to memory
                 ostokset.tallennaMuistiin();
             }
         });
     }
 
+    /**
+     * This method update listview
+     */
     private void paivitaLista(){
         ArrayList<String> arrayList = new ArrayList<String>();
         try {
@@ -124,6 +137,10 @@ public class haku extends AppCompatActivity {
         }
     }
 
+    /**
+     *This method search item what contains String on title or category
+     * @param view this because I use onclick method on activity xml
+     */
     public void etsiTuotteet(View view) {
         String syote = kentta.getText().toString();
         this.lista = muisti.getListFromStorage(this);
@@ -137,6 +154,7 @@ public class haku extends AppCompatActivity {
             this.lista = uusi;
         }
         paivitaLista();
+        //clear RAM
         System.gc();
     }
 }
