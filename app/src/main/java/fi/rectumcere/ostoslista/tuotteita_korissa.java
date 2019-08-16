@@ -2,7 +2,11 @@ package fi.rectumcere.ostoslista;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/**
+ * shoppinglist app
+ * @author Jesse Stenroth
+ * @version 1.0
+ */
 public class tuotteita_korissa {
     HashMap<String, Integer> map;
 

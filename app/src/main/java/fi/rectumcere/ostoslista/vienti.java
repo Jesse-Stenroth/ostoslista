@@ -13,7 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+/**
+ * shoppinglist app
+ * @author Jesse Stenroth
+ * @version 1.0
+ */
 public class vienti extends AppCompatActivity {
 
     private Context tama = this;

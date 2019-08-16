@@ -3,7 +3,9 @@ package fi.rectumcere.ostoslista;
 import java.util.ArrayList;
 
 /**
- * save and load data
+ * shoppinglist app
+ * @author Jesse Stenroth
+ * @version 1.0
  */
 class Tiedot {
     public ArrayList<Tuote> getTuotteet() {

@@ -1,5 +1,9 @@
 package fi.rectumcere.ostoslista;
-
+/**
+ * shoppinglist app
+ * @author Jesse Stenroth
+ * @version 1.0
+ */
 public class Tuote {
     String nimi;
     double koko;

@@ -16,7 +16,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+/**
+ * shoppinglist app
+ * @author Jesse Stenroth
+ * @version 1.0
+ */
 public class haku extends AppCompatActivity {
 
     private Context tama = this;

@@ -16,7 +16,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-
+/**
+ * shoppinglist app
+ * @author Jesse Stenroth
+ * @version 1.0
+ */
 public class tuotteetMuistissa {
     private JSONObject json;
     private JSONArray arrayJSON;
